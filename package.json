@@ -1,0 +1,27 @@
+{
+  "name": "brium-slackbot",
+  "version": "0.0.1",
+  "description": "Brium bot for Slack",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spalladino/brium-slackbot.git"
+  },
+  "keywords": [
+    "brium",
+    "slack"
+  ],
+  "author": "spalladino@manas.com.ar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spalladino/brium-slackbot/issues"
+  },
+  "homepage": "https://github.com/spalladino/brium-slackbot#readme",
+  "dependencies": {
+    "botkit": "0.0.5",
+    "http-post": "^0.1.1"
+  }
+}
