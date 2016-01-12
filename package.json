@@ -22,6 +22,7 @@
   "homepage": "https://github.com/spalladino/brium-slackbot#readme",
   "dependencies": {
     "botkit": "0.0.5",
-    "http-post": "^0.1.1"
+    "http-post": "^0.1.1",
+    "lodash": "^3.10.1"
   }
 }

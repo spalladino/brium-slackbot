@@ -2,32 +2,39 @@ var os = require('os');
 var fs = require('fs');
 var http = require('http');
 http.post = require('http-post');
-
+var _ = require('lodash');
 var Botkit = require('botkit');
 
-var briumUser = process.argv[2];
-if (!briumUser) {
-  console.log("Must specify brium user!");
-  process.exit(1);
-}
+var briumUrl = 'http://brium.me';
 
 var main = function(slackToken, briumToken) {
+  var users = null;
+
   var controller = Botkit.slackbot({
-      debug: true,
+    debug: true,
   });
 
   var bot = controller.spawn({
-      token: slackToken
-  }).startRTM();
+    token: slackToken
+  }).startRTM(function(err, bot, payload) {
+    users = payload.users;
+  });
+
+  var findUser = function(id) {
+    return _.find(users, function(user) {
+      return user.id == id;
+    });
+  };
 
   controller.hears(['.*'], 'direct_message', function(bot, message) {
     var postData = {
-      user_name: briumUser,
+      user_id: message.user,
+      user_name: findUser(message.user).name,
       token: briumToken,
       text: message.text
     };
 
-    http.post('http://brium.me/slack/slash_message', postData, function(res) {
+    http.post(briumUrl + '/slack/slash_message', postData, function(res) {
       res.setEncoding('utf8');
       res.on('data', function(chunk) {
         bot.reply(message, chunk.toString());

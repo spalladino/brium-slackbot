@@ -12,4 +12,4 @@ The bot requires two tokens, that can be supplied either via dotfiles or environ
 * `SLACK_TOKEN` or `.slack` file, bot token that can be acquired in [Slack](http://my.slack.com/services/new/bot)
 * `BRIUM_TOKEN` or `.brium` token, token for identifying the Brium team
 
-Run via `node . USER`, where `USER` is your Slack username as configured in Brium. This setting should not be necessary in the future.
+Run with: `node .`
